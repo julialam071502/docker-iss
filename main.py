@@ -51,7 +51,7 @@ def get_iss_location():
         exit(1)
 
 # db utility fcn
-def write_to_mongo(dtime, long, lat):
+def write_to_mongo(dtime, longitude, latitude):
     # write output to mongo db
     try:
         # use an ENV variable for the password
@@ -67,7 +67,7 @@ def write_to_mongo(dtime, long, lat):
         # use your UVA computing ID for the database name
         db = client['mst3k']
         collection = db['locations']
-        collection.insert_one({'timestamp': dtime, 'longitude': long, 'latitude': lat})
+        collection.insert_one({'timestamp': dtime, 'longitude': longitude, 'latitude': latitude})
         logger.info('Output written to MongoDB')
     except Exception as e:
         logger.error(e)
